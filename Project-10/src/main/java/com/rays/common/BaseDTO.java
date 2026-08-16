@@ -5,10 +5,12 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
 
-public abstract class BaseDTO {
+@MappedSuperclass
+public abstract class BaseDTO implements DropdownList {
 
 	@Id
 	@GeneratedValue(generator = "abhiPk")
@@ -74,6 +76,12 @@ public abstract class BaseDTO {
 
 	public void setModifiedDatetime(Timestamp modifiedDatetime) {
 		this.modifiedDatetime = modifiedDatetime;
+	}
+
+	@Override
+	public String getKey() {
+		// TODO Auto-generated method stub
+		return String.valueOf(id);
 	}
 
 }

@@ -6,13 +6,6 @@ import com.rays.dto.UserDTO;
 
 public interface UserServiceInt extends BaseServiceInt<UserDTO> {
 	
-	public UserDTO findByLoginId(String name, UserContext userContext);
+	public UserDTO findByLogin(String name, UserContext userContext);
 
-	public UserDTO register(UserDTO dto, UserContext userContext);
-
-	public UserDTO authenticate(String loginId, String password);
-
-	public UserDTO forgotPassword(String loginId);
-
-	public UserDTO changePassword(String loginId, String oldPassword, String newPassword, UserContext userContext);
 }

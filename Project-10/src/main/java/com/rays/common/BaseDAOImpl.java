@@ -23,7 +23,7 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 
 	public abstract Class<T> getDTOClass();
 
-	protected abstract List<Predicate> getgetWhereClause(T dto, CriteriaBuilder builder, Root<T> qRoot);
+	protected abstract List<Predicate> getWhereClause(T dto, CriteriaBuilder builder, Root<T> qRoot);
 
 	protected void populate(T dto, UserContext userContext) {
 
@@ -102,7 +102,7 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 
 		cq.select(qRoot);
 
-		List<Predicate> whereClause = getgetWhereClause(dto, builder, qRoot);
+		List<Predicate> whereClause = getWhereClause(dto, builder, qRoot);
 
 		cq.where(whereClause.toArray(new Predicate[whereClause.size()]));
 
@@ -136,6 +136,14 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 	}
 
 	protected boolean isZeroNumber(Double val) {
+		return val == null || val == 0;
+	}
+
+	protected boolean isZeroNumber(Long val) {
+		return val == null || val == 0;
+	}
+
+	protected boolean isZeroNumber(Integer val) {
 		return val == null || val == 0;
 	}
 

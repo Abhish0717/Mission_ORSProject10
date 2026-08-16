@@ -173,7 +173,7 @@ public class UserDTO extends BaseDTO {
 
 	@Override
 	public String getUniqueKey() {
-		return "loginId";
+		return "login";
 	}
 
 	@Override
@@ -193,6 +193,12 @@ public class UserDTO extends BaseDTO {
 
 	public String getName() {
 		return firstName + " " + lastName;
+	}
+
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
