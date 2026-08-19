@@ -9,18 +9,25 @@
 
         <table>
 
-            <tr>
-                <th>Name:</th>
-                <td><input type="text" name="name" [(ngModel)]="form.data.name" placeholder="Enter Role Name"></td>
-                <td style="color: red;">{{form.inputerror.name}}</td>
-            </tr>
+             <tr>
+            <th align="left">Name<span style="color: red">*</span></th>
+            <td align="center"><input type="text" name="name" [(ngModel)]="form.data.name" placeholder="Enter Role Name"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.name}}</td>
+        </tr>
 
             <tr>
-                <th>Descrption:</th>
-                <td><input type="text" name="description" [(ngModel)]="form.data.description"
-                        placeholder="Enter Role Description"></td>
-                <td style="color: red;">{{form.inputerror.description}}</td>
-            </tr>
+            <th align="left">Description<span style="color: red">*</span></th>
+            <td align="center">
+                <textarea 
+                    style="width: 165px; resize: none;" 
+                    name="description" 
+                    [(ngModel)]="form.data.description"
+                    rows="3" 
+                    placeholder="Enter Short description">
+                </textarea>
+            </td>
+            <td style="position: fixed; color: red;">{{form.inputerror.description}}</td>
+        </tr>
 
             <tr>
                 <th></th>

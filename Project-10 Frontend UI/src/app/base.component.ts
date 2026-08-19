@@ -4,8 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-base',
-  templateUrl: './base.component.html',
-  styleUrls: ['./base.component.css']
+  templateUrl: './base.component.html'
 })
 export class BaseCtl implements OnInit {
 
@@ -65,7 +64,8 @@ export class BaseCtl implements OnInit {
     this.serviceLocator.httpservice.post(this.api.save, this.form.data, (res: any) => {
       this.form.message = '';
       this.form.inputerror = {};
-      if (res.seccess) {
+      if (res.success) {
+        this.form.error = false;
         this.form.message = res.result.message;
         this.form.data.id = res.result.data;
       } else {
