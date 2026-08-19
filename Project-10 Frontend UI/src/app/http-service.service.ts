@@ -30,9 +30,6 @@ export class HttpServiceService {
     console.error('Request failed', error);
     if (error.status == 401) {
       localStorage.clear();
-      this.routor.navigateByUrl(['/login'], {
-        queryParams: { errorMessage: error.error.error }
-      });
     }
   }
 }
