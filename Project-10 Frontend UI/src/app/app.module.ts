@@ -18,6 +18,18 @@ import { SubjectComponent } from './subject/subject.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { FooterComponent } from './footer/footer.component';
+import { RoleListComponent } from './role/role-list.component';
+import { UserListComponent } from './user/user-list.component';
+import { CollegeListComponent } from './college/college-list.component';
+import { StudentListComponent } from './student/student-list.component';
+import { MarksheetListComponent } from './marksheet/marksheet-list.component';
+import { SubjectListComponent } from './subject/subject-list.component';
+import { CourseListComponent } from './course/course-list.component';
+import { FacultyListComponent } from './faculty/faculty-list.component';
+import { TimetableListComponent } from './timetable/timetable-list.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SignupComponent } from './login/signup.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +46,18 @@ import { FooterComponent } from './footer/footer.component';
     TimetableComponent,
     FacultyComponent,
     FooterComponent,
+    RoleListComponent,
+    UserListComponent,
+    CollegeListComponent,
+    StudentListComponent,
+    MarksheetListComponent,
+    SubjectListComponent,
+    CourseListComponent,
+    FacultyListComponent,
+    TimetableListComponent,
+    LoginComponent,
+    DashboardComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

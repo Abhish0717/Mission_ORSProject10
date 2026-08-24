@@ -7,19 +7,19 @@ import { Router } from '@angular/router';
 })
 export class HttpServiceService {
 
-  constructor(private httpClient: HttpClient, private routor: Router) {
+  constructor(private httpClient: HttpClient, private router: Router) {
 
   }
 
   post(endpoint: any, bean: any, callback: any) {
-    return this.httpClient.post(endpoint, bean).subscribe((data) => {
+    return this.httpClient.post(endpoint, bean, { withCredentials: true }).subscribe((data) => {
       callback(data);
     }, (error) => {
       this.handleError(error);
     });
   }
   get(endpoint: any, callback: any) {
-    return this.httpClient.get(endpoint).subscribe((data) => {
+    return this.httpClient.get(endpoint, { withCredentials: true }).subscribe((data) => {
       callback(data);
     }, (error) => {
       this.handleError(error);
@@ -30,6 +30,10 @@ export class HttpServiceService {
     console.error('Request failed', error);
     if (error.status == 401) {
       localStorage.clear();
+       this.router.navigate(['/login'], {
+        queryParams: { message: error.error.error }
+        // errorMessage: error.error
+      });
     }
   }
 }
