@@ -31,4 +31,6 @@ public class UserCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 		res.addResult("roleList", list);
 		return res;
 	}
+
+	
 }

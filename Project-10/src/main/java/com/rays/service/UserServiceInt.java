@@ -8,4 +8,7 @@ public interface UserServiceInt extends BaseServiceInt<UserDTO> {
 	
 	public UserDTO findByLogin(String name, UserContext userContext);
 
+	public UserDTO register(UserDTO dto, UserContext userContext);
+
+	public UserDTO authenticate(String loginId, String password);
 }

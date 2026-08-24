@@ -2,16 +2,12 @@ package com.rays.form;
 
 import java.util.Date;
 
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import com.rays.common.BaseDTO;
-import com.rays.common.BaseForm;
-import com.rays.dto.UserDTO;
-
-public class UserForm extends BaseForm {
+public class UserRegistrationForm {
 
 	@NotEmpty(message = "First Name is required")
 	private String firstName;
@@ -19,17 +15,12 @@ public class UserForm extends BaseForm {
 	@NotEmpty(message = "Last Name is required")
 	private String lastName;
 
+	@Email
 	@NotEmpty(message = "Login Id is required")
 	private String login;
 
 	@NotEmpty(message = "Password is required")
 	private String password;
-
-	@NotNull(message = "Role is required")
-	@Min(1)
-	private Long roleId;
-
-	private String roleName = null;
 
 	@NotNull(message = "Date of birth is required")
 	private Date dob;
@@ -37,15 +28,9 @@ public class UserForm extends BaseForm {
 	@NotEmpty(message = "Gender is required")
 	private String gender;
 
-	@NotNull(message = "Mobile No is required")
+	@NotEmpty(message = "Mobile No is required")
 	@Pattern(regexp = "(^$|[0-9]{10})")
 	private String phone;
-
-	@NotEmpty(message = "Alternate Mobile No is required")
-	private String alternateMobile;
-
-	@NotEmpty(message = "Status is required")
-	private String status;
 
 	public String getFirstName() {
 		return firstName;
@@ -79,22 +64,6 @@ public class UserForm extends BaseForm {
 		this.password = password;
 	}
 
-	public Long getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
-	}
-
-	public String getRoleName() {
-		return roleName;
-	}
-
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
-
 	public Date getDob() {
 		return dob;
 	}
@@ -117,40 +86,5 @@ public class UserForm extends BaseForm {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public String getAlternateMobile() {
-		return alternateMobile;
-	}
-
-	public void setAlternateMobile(String alternateMobile) {
-		this.alternateMobile = alternateMobile;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	@Override
-	public BaseDTO getDto() {
-
-		UserDTO dto = initDTO(new UserDTO());
-		dto.setFirstName(firstName);
-		dto.setLastName(lastName);
-		dto.setLogin(login);
-		dto.setPassword(password);
-		dto.setRoleId(roleId);
-		dto.setRoleName(roleName);
-		dto.setDob(dob);
-		dto.setGender(gender);
-		dto.setPhone(phone);
-		dto.setAlternateMobile(alternateMobile);
-		dto.setStatus(status);
-
-		return dto;
 	}
 }
