@@ -31,7 +31,7 @@ export class HttpServiceService {
     if (error.status == 401) {
       localStorage.clear();
        this.router.navigate(['/login'], {
-        queryParams: { message: error.error.error }
+        queryParams: { errorMessage: error }
         // errorMessage: error.error
       });
     }

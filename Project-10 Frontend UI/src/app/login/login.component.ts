@@ -15,6 +15,7 @@ export class LoginComponent {
     message: '',
     data: { id: null },
     inputerror: {},
+    errorMessage: ''
   };
 
   constructor(private httpService: HttpServiceService, private router: Router, private activatedRoute: ActivatedRoute) {
@@ -49,6 +50,7 @@ export class LoginComponent {
         localStorage.setItem("fname", res.result.fname);
         localStorage.setItem("lname", res.result.lname);
         localStorage.setItem("userId", res.result.data.id);
+        localStorage.setItem('token', 'Bearer ' + res.result.token)
 
         this.router.navigateByUrl('dashboard');
       }

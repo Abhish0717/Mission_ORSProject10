@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RoleComponent } from './role/role.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -30,6 +29,7 @@ import { TimetableListComponent } from './timetable/timetable-list.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './login/signup.component';
+import { AuthServiceService } from './auth-service.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,13 @@ import { SignupComponent } from './login/signup.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthServiceService,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
