@@ -1,0 +1,166 @@
+<div class="attendance-list-page">
+
+    <div class="container-fluid py-4">
+
+        <!-- Page Header -->
+        <div class="list-page-header">
+            <div>
+                <h1>
+                    <i class="bi bi-calendar-check-fill me-2"></i>
+                    Hotel List
+                </h1>
+                <p>View and manage hotel records</p>
+            </div>
+            <div class="list-header-icon">
+                <i class="bi bi-calendar-check"></i>
+            </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="alert alert-success alert-dismissible fade show" *ngIf="!form.error && form.message" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            {{ form.message }}
+            <button type="button" class="btn-close" aria-label="Close" (click)="form.message = ''"></button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" *ngIf="form.error && form.message" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            {{ form.message }}
+            <button type="button" class="btn-close" aria-label="Close" (click)="form.message = ''"></button>
+        </div>
+
+        <!-- List Available -->
+        <div *ngIf="form.list.length > 0">
+
+            <!-- Search Card -->
+            <div class="search-card mb-3">
+                <div class="row align-items-end g-3">
+                    <div class="col-md-5 col-lg-4">
+                        <label class="form-label">
+                            <i class="bi bi-funnel-fill me-1"></i>
+                            Hotel Name
+                        </label>
+                        <input name="Hotel Name" class="form-control" [(ngModel)]="form.searchParams.hotelName" placeholder="Search By Hotel Name">
+                    </div>
+
+                    <div class="col-md-auto">
+                        <button type="button" class="btn btn-primary action-btn" (click)="search()">
+                            <i class="bi bi-search me-1"></i>
+                            Search
+                        </button>
+                    </div>
+
+                    <div class="col-md-auto">
+                        <button type="button" class="btn btn-outline-secondary action-btn" (click)="reset()">
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Card -->
+            <div class="table-card">
+                <div class="table-responsive">
+                    <table class="table attendance-table mb-0">
+                        <thead>
+                            <tr>
+                                <th class="checkbox-column">
+                                    <input type="checkbox" class="form-check-input" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)">
+                                </th>
+                                <th>S.No</th>
+                                <th>
+                                    <i class="bi bi-person me-1"></i>
+                                    Hotel Name
+                                </th>
+                                <th>
+                                    <i class="bi bi-calendar-date me-1"></i>
+                                    Location
+                                </th>
+                                <th>
+                                    <i class="bi bi-check2-circle me-1"></i>
+                                    Rating
+                                </th>
+                                <th>
+                                    <i class="bi bi-currency-rupee me-1"></i>
+                                    Contact No.
+                                </th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let m of form.list; let i = index">
+                                <td class="checkbox-column">
+                                    <input type="checkbox" class="form-check-input" #checkboxes (change)="checklistUpdate()" [id]="m.id" [value]="isMasterSel">
+                                </td>
+                                <td>
+                                    <span class="serial-number">{{(form.pageNo * 5) + i + 1}}</span>
+                                </td>
+                                <td>
+                                    <span class="hotel-name">{{m.hotelName}}</span>
+                                </td>
+                                <td>
+                                    <span class="hotel-location">{{m.location}}</span>
+                                </td>
+                                <td>
+                                    <span class="hotel-rating">{{m.rating}}</span>
+                                </td>
+                                <td>
+                                    <span class="hotel-contact">{{m.contactNo}}</span>
+                                </td>
+                                
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-sm btn-outline-primary edit-btn" (click)="forward('/hotel/' + m.id)">
+                                        <i class="bi bi-pencil-square me-1"></i>
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bottom Actions -->
+            <div class="list-actions mt-3 d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary" (click)="previous()" [disabled]="form.pageNo == 0">
+                    <i class="bi bi-chevron-left me-1"></i>
+                    Previous
+                </button>
+
+                <button type="button" class="btn btn-primary" (click)="forward('/hotel')">
+                    <i class="bi bi-plus-circle me-1"></i>
+                    New Hotel
+                </button>
+
+                <button type="button" class="btn btn-danger" (click)="deleteMany()">
+                    <i class="bi bi-trash3 me-1"></i>
+                    Delete
+                </button>
+
+                <div class="ms-auto">
+                    <button type="button" class="btn btn-outline-primary" (click)="next()" [disabled]="form.nextListSize == 0">
+                        Next
+                        <i class="bi bi-chevron-right ms-1"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- No Records -->
+        <div class="empty-state" *ngIf="form.list.length == 0">
+            <div class="empty-icon">
+                <i class="bi bi-inbox"></i>
+            </div>
+            <h4>No Hotel Records Found</h4>
+            <p>There are no hotel records available.</p>
+            <button type="button" class="btn btn-primary" (click)="reset()">
+                <i class="bi bi-arrow-left me-1"></i>
+                Back
+            </button>
+        </div>
+
+    </div>
+
+</div>

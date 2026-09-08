@@ -1,0 +1,162 @@
+<div class="role-page">
+
+    <div class="container py-4">
+
+        <div class="role-card">
+
+            <!-- Header -->
+            <div class="role-header">
+                <div>
+                    <h1 *ngIf="!form.data.id">
+                        <i class="bi bi-person-fill me-2"></i>
+                        Add User
+                    </h1>
+                    <h1 *ngIf="form.data.id > 0">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Update User
+                    </h1>
+                    <p>Manage user account information</p>
+                </div>
+                <div class="role-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+            </div>
+
+            <div class="alert alert-success alert-dismissible fade show" *ngIf="!form.error && form.message"
+                role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                {{ form.message }}
+                <button type="button" class="btn-close" aria-label="Close" (click)="form.message = ''"></button>
+            </div>
+
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="form.error && form.message" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                {{ form.message }}
+                <button type="button" class="btn-close" aria-label="Close" (click)="form.message = ''"></button>
+            </div>
+
+            <form (submit)="submit()">
+                <div class="role-body">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <label class="form-label">First Name <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" name="firstName" class="form-control"
+                                    [(ngModel)]="form.data.firstName" placeholder="Enter First Name">
+                            </div>
+                            <div class="validation-error">{{form.inputerror.firstName}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Last Name <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" name="lastName" class="form-control" [(ngModel)]="form.data.lastName"
+                                    placeholder="Enter Last Name">
+                            </div>
+                            <div class="validation-error">{{form.inputerror.lastName}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Login Id <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                <input type="text" name="login" class="form-control" [(ngModel)]="form.data.login"
+                                    placeholder="Enter Login ID">
+                            </div>
+                            <div class="validation-error">{{form.inputerror.login}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Password <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input type="password" name="password" class="form-control"
+                                    [(ngModel)]="form.data.password" placeholder="Enter Password">
+                            </div>
+                            <div class="validation-error">{{form.inputerror.password}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Date of Birth <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                                <input type="date" name="dob" class="form-control" [(ngModel)]="form.data.dob"
+                                    placeholder="Select Date of Birth">
+                            </div>
+                            <div class="validation-error">{{form.inputerror.dob}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Gender <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
+                                <select name="gender" class="form-select" [(ngModel)]="form.data.gender">
+                                    <option value="undefined">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="validation-error">{{form.inputerror.gender}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Role <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                                <select name="roleId" class="form-select" [(ngModel)]="form.data.roleId">
+                                    <option value="undefined">Select Role</option>
+                                    <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">{{obj.value}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="validation-error">{{form.inputerror.roleId}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Mobile <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                                <input type="text" name="phone" class="form-control" [(ngModel)]="form.data.phone"
+                                    placeholder="Enter Mobile No.">
+                            </div>
+                            <div class="validation-error">{{form.inputerror.phone}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Alternate Mobile <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-telephone-plus"></i></span>
+                                <input type="text" name="alternateMobile" class="form-control"
+                                    [(ngModel)]="form.data.alternateMobile" placeholder="Enter Alternate Mobile No.">
+                            </div>
+                            <div class="validation-error">{{form.inputerror.alternateMobile}}</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Status <span class="required">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-toggle-on"></i></span>
+                                <select name="status" class="form-select" [(ngModel)]="form.data.status">
+                                    <option value="undefined">Select Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="validation-error">{{form.inputerror.status}}</div>
+                        </div>
+
+                    </div>
+                    <div class="role-actions">
+                        <button type="submit" class="btn btn-primary role-btn">
+                            <i class="bi" [ngClass]="form.data.id ? 'bi-check-circle-fill' : 'bi-plus-circle-fill'"></i>
+                            {{ form.data.id ? 'Update' : 'Save' }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

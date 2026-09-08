@@ -1,0 +1,179 @@
+<div class="login-page">
+
+    <div class="login-card">
+
+        <!-- Left / Brand Section -->
+        <div class="login-brand">
+            <div class="brand-icon">
+                <i class="bi bi-mortarboard-fill"></i>
+            </div>
+
+            <h1>ORS Project</h1>
+            <p>Online Result System</p>
+
+            <div class="brand-info">
+                <i class="bi bi-shield-check"></i>
+                <span>Secure & Reliable</span>
+            </div>
+
+            <div class="brand-info">
+                <i class="bi bi-lightning-charge"></i>
+                <span>Fast & Easy Access</span>
+            </div>
+
+            <div class="brand-info">
+                <i class="bi bi-person-check"></i>
+                <span>Manage Your Account</span>
+            </div>
+        </div>
+
+
+        <!-- Right / Login Section -->
+        <div class="login-form-section">
+
+            <div class="text-center mb-4">
+                <h2>Welcome Back!</h2>
+                <p>Please login to your account</p>
+            </div>
+
+
+            <!-- Success Message -->
+            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                *ngIf="!form.error && form.message">
+
+                <i class="bi bi-check-circle-fill me-2"></i>
+                {{ form.message }}
+
+            </div>
+
+
+            <!-- Error Message -->
+            <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                *ngIf="form.error && form.message || form.errorMessage">
+
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                {{ form.message }}
+
+                <button type="button" class="btn-close ms-auto" aria-label="Close" (click)="form.message = ''">
+                </button>
+
+            </div>
+
+
+            <!-- Login ID -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    <i class="bi bi-person me-1"></i>
+                    Login ID
+                    <span class="text-danger">*</span>
+                </label>
+
+                <div class="input-group input-group-lg">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                    </span>
+
+                    <input type="text" name="login" class="form-control" [(ngModel)]="form.data.login"
+                        placeholder="Enter Login ID" autocomplete="username">
+
+                </div>
+
+                <div class="text-danger small mt-1" *ngIf="form.inputerror.login">
+                    <i class="bi bi-exclamation-circle me-1"></i>
+                    {{ form.inputerror.login }}
+                </div>
+
+            </div>
+
+
+            <!-- Password -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    <i class="bi bi-lock me-1"></i>
+                    Password
+                    <span class="text-danger">*</span>
+                </label>
+
+                <div class="input-group input-group-lg">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-lock"></i>
+                    </span>
+
+                    <input type="password" name="password" class="form-control" [(ngModel)]="form.data.password"
+                        placeholder="Enter Password" autocomplete="current-password">
+
+                </div>
+
+                <div class="text-danger small mt-1" *ngIf="form.inputerror.password">
+                    <i class="bi bi-exclamation-circle me-1"></i>
+                    {{ form.inputerror.password }}
+                </div>
+
+            </div>
+
+
+            <!-- Forgot Password -->
+            <div class="text-end mb-4">
+
+                <!-- Agar forgot password page hai to uncomment karo -->
+
+
+                <a [routerLink]="['/forgotpassword']" class="forgot-link">
+                    Forgot Password?
+                </a>
+
+
+            </div>
+
+
+            <!-- Sign In -->
+            <div class="d-grid">
+
+                <button type="button" class="btn btn-primary btn-lg login-btn" (click)="signIn()">
+
+                    <i class="bi bi-box-arrow-in-right me-2"></i>
+                    Sign In
+
+                </button>
+
+            </div>
+
+
+            <!-- Divider -->
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+
+            <!-- Sign Up -->
+            <div class="d-grid">
+
+                <button type="button" class="btn btn-outline-primary btn-lg signup-btn" (click)="signUp()">
+
+                    <i class="bi bi-person-plus me-2"></i>
+                    Create New Account
+
+                </button>
+
+            </div>
+
+
+            <!-- Footer -->
+            <div class="text-center mt-4">
+
+                <small class="text-muted">
+                    <i class="bi bi-shield-lock me-1"></i>
+                    Your information is safe and secure
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
