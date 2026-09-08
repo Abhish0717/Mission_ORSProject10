@@ -1,0 +1,135 @@
+{
+    "Login": "Login",
+    "Sign In": "Sign In",
+    "Sign Up": "Sign Up",
+    "Forget my password?": "Forget my password?",
+    "Login Id": "Login Id",
+    "Password": "Password",
+    "UserRegistration": "User Registration",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "LoginId": "Login Id",
+    "DateOfBirth": "Date of Birth",
+    "Gender": "Gender",
+    "Mobile": "Mobile",
+    "Buttons": {
+        "SignUp": "Sign Up",
+        "Reset": "Reset",
+        "Back": "Back"
+    },
+    "GenderOptions": {
+        "Select": "------------Select------------",
+        "Male": "Male",
+        "Female": "Female"
+    },
+    "Greetings": {
+        "HiUser": "Hi, {{name}} ( {{role}} )",
+        "HiGuest": "Hi, Guest"
+    },
+    "Links": {
+        "MyProfile": "My Profile",
+        "ChangePassword": "Change Password",
+        "AddUser": "Add User",
+        "UserList": "User List",
+        "AddRole": "Add Role",
+        "RoleList": "Role List",
+        "AddCollege": "Add College",
+        "CollegeList": "College List",
+        "AddStudent": "Add Student",
+        "StudentList": "Student List",
+        "AddMarksheet": "Add Marksheet",
+        "MarksheetList": "Marksheet List",
+        "AddCourse": "Add Course",
+        "CourseList": "Course List",
+        "AddSubject": "Add Subject",
+        "SubjectList": "Subject List",
+        "AddTimetable": "Add Timetable",
+        "TimetableList": "Timetable List",
+        "AddFaculty": "Add Faculty",
+        "FacultyList": "Faculty List",
+        "Logout": "Logout",
+        "Dashboard": "Dashboard",
+        "Login": "Login",
+        "Marksheet": "Marksheet",
+        "Academics": "Academics",
+        "College": "College",
+        "Course": "Course",
+        "Subject": "Subject",
+        "People": "People",
+        "Users": "Users",
+        "Roles": "Roles",
+        "Students": "Students",
+        "Timetable": "Timetable",
+        "Faculty": "Faculty",
+        "DailyModule": "Daily Module",
+        "AddAttendance": "Add Attendance",
+        "AttendanceList": "Attendance List",
+        "AddHotel": "Add Hotel",
+        "HotelList": "Hotel List"
+    },
+    "LocaleSelect": {
+        "Select": "-------Select-------",
+        "English": "English",
+        "Hindi": "Hindi"
+    },
+    "Messages": {
+        "LoginIdCannotChange": "Login ID cannot be changed"
+    },
+    "UserForm": {
+        "AddUser": "Add User",
+        "UpdateUser": "Update User",
+        "FirstName": "First Name",
+        "LastName": "Last Name",
+        "LoginId": "Login Id",
+        "Password": "Password",
+        "DateOfBirth": "Date of Birth",
+        "Gender": "Gender",
+        "Role": "Role",
+        "Mobile": "Mobile",
+        "AlternateMobile": "Alternate Mobile",
+        "Status": "Status",
+        "Placeholders": {
+            "FirstName": "Enter First Name",
+            "LastName": "Enter Last Name",
+            "LoginId": "Enter Login ID",
+            "Password": "Enter Password",
+            "DateOfBirth": "Select Date of Birth",
+            "Mobile": "Enter Mobile No.",
+            "AlternateMobile": "Enter Alternate Mobile No."
+        },
+        "SelectOptions": {
+            "Select": "------------Select------------",
+            "Male": "Male",
+            "Female": "Female",
+            "Active": "Active",
+            "Inactive": "Inactive"
+        },
+        "Buttons": {
+            "Save": "Save",
+            "List": "List"
+        }
+    },
+    "Navbar": {
+        "Marksheet": "Marksheet",
+        "Academics": "Academics",
+        "College": "College",
+        "Course": "Course",
+        "Subject": "Subject",
+        "People": "People",
+        "Users": "Users",
+        "Roles": "Roles",
+        "Students": "Students",
+        "Timetable": "Timetable",
+        "Faculty": "Faculty",
+        "DailyModule": "Daily Module",
+        "AddAttendance": "Add Attendance",
+        "AttendanceList": "Attendance List",
+        "AddHotel": "Add Hotel",
+        "HotelList": "Hotel List"
+    },
+    "Footer": {
+        "Company": "Rays EdTech, SunilOS Infotech Pvt. Ltd.",
+        "SystemName": "Online Result System",
+        "Rights": "All Rights Reserved"
+    }
+}
