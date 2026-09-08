@@ -1,5 +1,4 @@
 com\rays\service\MarksheetServiceInt.class
-com\rays\ORSProject10JWTApplication$1.class
 com\rays\service\TimeTableServiceInt.class
 com\rays\dao\MarksheetDAOInt.class
 com\rays\dto\HotelDTO.class
@@ -41,8 +40,8 @@ com\rays\service\HotelServiceInt.class
 com\rays\ctl\CourseCtl.class
 com\rays\dto\CourseDTO.class
 com\rays\form\StudentForm.class
-com\rays\ORSProject10JWTApplication.class
 com\rays\common\BaseServiceInt.class
+com\rays\ORSProject10Application.class
 com\rays\ctl\SubjectCtl.class
 com\rays\dao\CollegeDAOInt.class
 com\rays\service\CollegeServiceImpl.class
@@ -71,6 +70,7 @@ com\rays\dto\StudentDTO.class
 com\rays\service\TimeTableServiceImpl.class
 com\rays\common\DropdownList.class
 com\rays\dto\TimeTableDTO.class
+com\rays\ORSProject10Application$1.class
 com\rays\dao\HotelDAOInt.class
 com\rays\service\RoleServiceInt.class
 com\rays\dao\FacultyDAOImpl.class
