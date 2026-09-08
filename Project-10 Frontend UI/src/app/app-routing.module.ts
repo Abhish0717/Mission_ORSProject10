@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './login/signup.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RoleComponent } from './role/role.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { UserComponent } from './user/user.component';
 import { CollegeComponent } from './college/college.component';
 import { StudentComponent } from './student/student.component';
@@ -19,9 +21,13 @@ import { CollegeListComponent } from './college/college-list.component';
 import { RoleListComponent } from './role/role-list.component';
 import { UserListComponent } from './user/user-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignupComponent } from './login/signup.component';
+import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { AttendanceListComponent } from './attendance/attendance-list.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { HotelListComponent } from './hotel/hotel-list.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { ChangepasswordComponent } from './user/changepassword.component';
+import { MyprofileComponent } from './user/myprofile.component';
 
 const routes: Routes = [
   {
@@ -148,11 +154,60 @@ const routes: Routes = [
   {
     path: 'facultylist',
     component: FacultyListComponent
+  },
+  {
+    path: 'forgotpassword',
+    component: ForgotpasswordComponent
+  },
+  {
+    path: 'changepassword',
+    component: ChangepasswordComponent
+  },
+  {
+    path: 'myprofile/:id',
+    component: MyprofileComponent
+  },
+  // {
+  //   path: 'marksheetmeritlist',
+  //   component: MarksheetmeritlistComponent
+  // },
+  // {
+  //   path: "getmarksheet",
+  //   component: GetmarksheetComponent
+  // },
+  // {
+  //   path: "getmarksheet/:id",
+  //   component: GetmarksheetComponent
+  // },
+  // //Daily Modules
+  // {
+  //   path: 'attendance',
+  //   component: AttendanceComponent
+  // },
+  {
+    path: 'attendance/:id',
+    component: AttendanceComponent
+  },
+  {
+    path: 'attendancelist',
+    component: AttendanceListComponent
+  },
+  {
+    path: 'hotel',
+    component: HotelComponent
+  },
+  {
+    path: 'hotel/:id',
+    component: HotelComponent
+  },
+  {
+    path: 'hotellist',
+    component: HotelListComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

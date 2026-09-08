@@ -1,0 +1,193 @@
+<div class="Hotel-page">
+
+    <div class="container py-4">
+
+        <div class="Hotel-card">
+
+            <!-- Header -->
+            <div class="Hotel-header">
+
+                <div>
+                    <h1 *ngIf="!form.data.id">
+                        <i class="bi bi-building-fill me-2"></i>
+                        Add Hotel
+                    </h1>
+
+                    <h1 *ngIf="form.data.id > 0">
+                        <i class="bi bi-building me-2"></i>
+                        Update Hotel
+                    </h1>
+
+                    <p>
+                        Manage Hotel
+                    </p>
+                </div>
+
+                <div class="Hotel-icon">
+                    <i class="bi bi-building"></i>
+                </div>
+
+            </div>
+
+
+            <!-- Success Message -->
+            <div class="alert alert-success alert-dismissible fade show" *ngIf="!form.error && form.message"
+                Hotel="alert">
+
+                <i class="bi bi-check-circle-fill me-2"></i>
+
+                {{form.message}}
+
+                <button type="button" class="btn-close" aria-label="Close" (click)="form.message = ''">
+                </button>
+
+            </div>
+
+
+            <!-- Error Message -->
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="form.error && form.message"
+                Hotel="alert">
+
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+                {{form.message}}
+
+                <button type="button" class="btn-close" aria-label="Close" (click)="form.message = ''">
+                </button>
+
+            </div>
+
+
+            <!-- Form -->
+            <form (submit)="submit()">
+
+                <div class="Hotel-body">
+
+                    <div class="row g-4">
+
+
+                        <!-- Hotel Name -->
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Hotel Name <span class="required">*</span>
+                            </label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-text">
+                                    <i class="bi bi-building me-1"></i>
+                                </span>
+
+                                <input type="text" name="hotelName" class="form-control"
+                                    [(ngModel)]="form.data.hotelName" placeholder="Enter Hotel Name">
+
+                            </div>
+
+                            <div class="validation-error">
+                                {{form.inputerror.hotelName}}
+                            </div>
+
+                        </div>
+
+
+                        <!-- Location -->
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Location <span class="required">*</span>
+                            </label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-text">
+                                    <i class="bi bi-geo-alt me-1"></i>
+                                </span>
+
+                                <input type="text" name="location" class="form-control" [(ngModel)]="form.data.location"
+                                    placeholder="Enter Hotel Location">
+
+                            </div>
+
+                            <div class="validation-error">
+                                {{form.inputerror.location}}
+                            </div>
+
+                        </div>
+
+
+                        <!-- Rating -->
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Rating <span class="required">*</span>
+                            </label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-text">
+                                    <i class="bi bi-star-fill text-warning me-1"></i>
+                                </span>
+
+                                <input type="double" name="rating" class="form-control" [(ngModel)]="form.data.rating"
+                                    placeholder="Enter Hotel Rating">
+
+                            </div>
+
+                            <div class="validation-error">
+                                {{form.inputerror.rating}}
+                            </div>
+
+                        </div>
+
+
+                        <!-- Contact No. -->
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Contact No. <span class="required">*</span>
+                            </label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-text">
+                                    <i class="bi bi-telephone-fill me-1"></i>
+                                </span>
+
+                                <input type="text" name="contactNo" class="form-control" [(ngModel)]="form.data.contactNo"
+                                    placeholder="Enter Contact No.">
+
+                            </div>
+
+                            <div class="validation-error">
+                                {{form.inputerror.contactNo}}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <div class="Hotel-actions">
+
+                        <button type="submit" class="btn btn-primary Hotel-btn">
+
+                            <i class="bi" [ngClass]="form.data.id ? 'bi-check-circle-fill' : 'bi-plus-circle-fill'">
+                            </i>
+
+                            {{form.data.id ? 'Update' : 'Save'}}
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,7 +1,7 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, EMPTY, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,29 +24,29 @@ export class AuthServiceService implements HttpInterceptor {
         },
       });
     }
-    return next.handle(req).pipe(
-      catchError((error: HttpErrorResponse) => {
-
-        if (error.status === 401) {
-          localStorage.clear();
-          this.router.navigate(['/login'], {
-            queryParams: { errorMessage: error.error },
-          });
-          return EMPTY;
-
-        }
-
-        if (error.status === 403) {
-          localStorage.clear();
-          this.router.navigate(['/login'], {
-            queryParams: {
-              errorMessage: 'Your Token is expired... plz login again..!!',
-            },
-          });
-          return EMPTY;
-        }
-        return throwError(error);
-      }),
-    );
+    return next.handle(req);
   }
 }
+
+// .pipe(
+//       catchError((error: HttpErrorResponse) => {
+
+//         if (error.status === 401) {
+//           localStorage.clear();
+//           this.router.navigate(['/login'], {
+//             queryParams: { errorMessage: error.error },
+//           });
+//           return EMPTY;
+//         }
+//         if (error.status === 403) {
+//           localStorage.clear();
+//           this.router.navigate(['/login'], {
+//             queryParams: {
+//               errorMessage: 'Your Token is expired... plz login again..!!',
+//             },
+//           });
+//           return EMPTY;
+//         }
+//         return throwError(error);
+//       }),
+//     );

@@ -1,8 +1,475 @@
-<br><br><br><br><br><br><br>
-<h1 align="center">
-    <font size="10px" color="navy">Welcome to ORSProject-10</font>
-</h1>
-<br> <br> <br> <br> <br> <br> <br>
-<br> <br> <br> <br> <br> <br> <br>
-<br> <br> <br> <br>
-<br> <br>
+<!-- =========================================
+     COMMON DASHBOARD BACKGROUND
+========================================= -->
+
+<div class="dashboard-background">
+
+
+    <!-- =========================================
+         LOGGED IN DASHBOARD
+    ========================================== -->
+
+    <div class="dashboard-page" *ngIf="isLogin()">
+
+        <div class="container py-5">
+
+            <!-- Header -->
+            <div class="text-center mb-5">
+
+                <p class="dashboard-welcome">
+                    <i class="bi bi-stars me-2"></i>
+                    Welcome Back, {{form.data.fname}}
+                </p>
+
+                <h1 class="dashboard-title">
+                    ORS Project Dashboard
+                </h1>
+
+                <p class="dashboard-subtitle">
+                    Online Result System
+                </p>
+
+            </div>
+
+
+            <!-- 9 Module Cards -->
+            <div class="row g-4">
+
+
+                <!-- Users -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon user-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+
+                        <h4>Users</h4>
+
+                        <p>
+                            Manage system users and their information.
+                        </p>
+
+                        <a [routerLink]="['/userlist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Users
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Roles -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon role-icon">
+                            <i class="bi bi-person-badge-fill"></i>
+                        </div>
+
+                        <h4>Roles</h4>
+
+                        <p>
+                            Manage user roles and permissions.
+                        </p>
+
+                        <a [routerLink]="['/rolelist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Roles
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- College -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon college-icon">
+                            <i class="bi bi-building-fill"></i>
+                        </div>
+
+                        <h4>College</h4>
+
+                        <p>
+                            Manage college details and information.
+                        </p>
+
+                        <a [routerLink]="['/collegelist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Colleges
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Students -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon student-icon">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+
+                        <h4>Students</h4>
+
+                        <p>
+                            Add, update and manage student records.
+                        </p>
+
+                        <a [routerLink]="['/studentlist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Students
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Marksheet -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon marksheet-icon">
+                            <i class="bi bi-file-earmark-text-fill"></i>
+                        </div>
+
+                        <h4>Marksheet</h4>
+
+                        <p>
+                            Manage student marks and examination results.
+                        </p>
+
+                        <a [routerLink]="['/marksheetlist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Marksheets
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Courses -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon course-icon">
+                            <i class="bi bi-book-fill"></i>
+                        </div>
+
+                        <h4>Courses</h4>
+
+                        <p>
+                            Manage courses offered by the institution.
+                        </p>
+
+                        <a [routerLink]="['/courselist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Courses
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Subjects -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon subject-icon">
+                            <i class="bi bi-journal-bookmark-fill"></i>
+                        </div>
+
+                        <h4>Subjects</h4>
+
+                        <p>
+                            Manage subjects and academic information.
+                        </p>
+
+                        <a [routerLink]="['/subjectlist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Subjects
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Timetable -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon timetable-icon">
+                            <i class="bi bi-calendar3-fill"></i>
+                        </div>
+
+                        <h4>Timetable</h4>
+
+                        <p>
+                            Manage class schedules and timetables.
+                        </p>
+
+                        <a [routerLink]="['/timetablelist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Timetable
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Faculty -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon faculty-icon">
+                            <i class="bi bi-person-workspace"></i>
+                        </div>
+
+                        <h4>Faculty</h4>
+
+                        <p>
+                            Manage faculty members and their details.
+                        </p>
+
+                        <a [routerLink]="['/facultylist']" class="btn btn-primary">
+
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Manage Faculty
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Quote -->
+            <div class="dashboard-quote mt-5">
+
+                <i class="bi bi-quote"></i>
+
+                <span>
+                    Empowering Students, Enriching Education
+                </span>
+
+                <i class="bi bi-mortarboard-fill"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         NOT LOGGED IN / OLD WELCOME DASHBOARD
+    ========================================== -->
+
+    <div class="welcome-page" *ngIf="!isLogin()">
+
+        <div class="container">
+
+            <div class="row align-items-center min-vh-100 py-5">
+
+                <!-- Left Content -->
+                <div class="col-lg-6 text-center text-lg-start">
+
+                    <p class="welcome-text">
+                        <i class="bi bi-stars me-2"></i>
+                        Welcome to
+                    </p>
+
+                    <h1 class="project-title">
+                        ORSProject-10
+                    </h1>
+
+                    <div class="title-line">
+
+                        <span></span>
+
+                        <i class="bi bi-star-fill"></i>
+
+                        <span></span>
+
+                    </div>
+
+                    <h4 class="subtitle">
+                        Online Result System
+                    </h4>
+
+                    <p class="description">
+                        Simplifying Education, Delivering Excellence!
+                        <br>
+                        Manage students, results and reports with ease.
+                    </p>
+
+                    <div class="mt-4">
+
+                        <button class="btn btn-primary btn-lg me-2 px-4" [routerLink]="['/login']">
+
+                            <i class="bi bi-speedometer2 me-2"></i>
+                            Get Started
+
+                        </button>
+
+                        <button class="btn btn-outline-primary btn-lg px-4">
+
+                            <i class="bi bi-info-circle me-2"></i>
+                            Learn More
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Right Image -->
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+
+                    <div class="image-container">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Features -->
+            <div class="row g-4 pb-5">
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon student-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+
+                        <h5>Student Friendly</h5>
+
+                        <p>
+                            Easy access to student information and results.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon security-icon">
+                            <i class="bi bi-shield-lock-fill"></i>
+                        </div>
+
+                        <h5>Secure & Reliable</h5>
+
+                        <p>
+                            Your information is protected with secure access.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon speed-icon">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+
+                        <h5>Fast & Efficient</h5>
+
+                        <p>
+                            Quick processing and instant result management.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon report-icon">
+                            <i class="bi bi-bar-chart-fill"></i>
+                        </div>
+
+                        <h5>Smart Reports</h5>
+
+                        <p>
+                            Generate detailed and meaningful reports easily.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom Quote -->
+            <div class="quote-box mb-5">
+
+                <i class="bi bi-quote"></i>
+
+                <span>
+                    Empowering Students, Enriching Education
+                </span>
+
+                <i class="bi bi-heart-fill"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

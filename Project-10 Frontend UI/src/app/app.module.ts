@@ -3,11 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RoleComponent } from './role/role.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { UserComponent } from './user/user.component';
 import { CollegeComponent } from './college/college.component';
 import { StudentComponent } from './student/student.component';
@@ -30,11 +29,18 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './login/signup.component';
 import { AuthServiceService } from './auth-service.service';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { AttendanceListComponent } from './attendance/attendance-list.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { HotelListComponent } from './hotel/hotel-list.component';
+import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { ChangepasswordComponent } from './user/changepassword.component';
+import { MyprofileComponent } from './user/myprofile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
+    DashboardComponent,
     RoleComponent,
     NavbarComponent,
     UserComponent,
@@ -56,8 +62,14 @@ import { AuthServiceService } from './auth-service.service';
     FacultyListComponent,
     TimetableListComponent,
     LoginComponent,
-    DashboardComponent,
     SignupComponent,
+    AttendanceComponent,
+    AttendanceListComponent,
+    HotelComponent,
+    HotelListComponent,
+    ForgotpasswordComponent,
+    ChangepasswordComponent,
+    MyprofileComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,9 +79,7 @@ import { AuthServiceService } from './auth-service.service';
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthServiceService,
-      multi: true,
+      provide: HTTP_INTERCEPTORS, useClass: AuthServiceService, multi: true,
     }
   ],
   bootstrap: [AppComponent]
