@@ -1,26 +1,33 @@
 package com.rays.ctl;
 
+import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.rays.common.BaseCtl;
 import com.rays.common.DropdownList;
 import com.rays.common.ORSResponse;
+import com.rays.dto.AttachmentDTO;
 import com.rays.dto.RoleDTO;
 import com.rays.dto.UserDTO;
 import com.rays.form.ChangePasswordForm;
-import com.rays.form.ForgetPasswordForm;
 import com.rays.form.MyProfileForm;
 import com.rays.form.UserForm;
+import com.rays.service.AttachmentServiceInt;
 import com.rays.service.RoleServiceInt;
 import com.rays.service.UserServiceInt;
 
@@ -30,6 +37,12 @@ public class UserCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 
 	@Autowired
 	RoleServiceInt roleService = null;
+	
+	/**
+	 * Service for Attachment (file upload/download).
+	 */
+	@Autowired
+	AttachmentServiceInt attachmentService;
 
 	@GetMapping("preload")
 	public ORSResponse preload() {
@@ -87,5 +100,75 @@ public class UserCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 		res.addMessage("Password has been changed");
 
 		return res;
+	}
+	
+	/**
+	 * Uploads profile picture for user.
+	 * 
+	 * @param userId user ID
+	 * @param file multipart file
+	 * @param req HTTP request
+	 * @return ORSResponse containing image ID
+	 */
+	@PostMapping("/profilePic/{userId}")
+	public ORSResponse uploadPic(@PathVariable Long userId, @RequestParam("file") MultipartFile file,
+			HttpServletRequest req) {
+
+		AttachmentDTO attachmentDto = new AttachmentDTO(file);
+
+		attachmentDto.setDescription("profile pic");
+
+		attachmentDto.setUserId(userId);
+
+		UserDTO userDto = baseService.findById(userId, userContext);
+
+		if (userDto.getImageId() != null && userDto.getImageId() > 0) {
+			attachmentDto.setId(userDto.getImageId());
+		}
+
+		Long imageId = attachmentService.save(attachmentDto, userContext);
+
+		if (userDto.getImageId() == null) {
+			userDto.setImageId(imageId);
+			baseService.update(userDto, userContext);
+		}
+
+		ORSResponse res = new ORSResponse();
+
+		res.addResult("imageId", imageId);
+
+		return res;
+	}
+
+	/**
+	 * Downloads profile picture of user.
+	 * 
+	 * @param userId user ID
+	 * @param response HTTP response
+	 */
+	@GetMapping("/profilePic/{userId}")
+	public void downloadPic(@PathVariable Long userId, HttpServletResponse response) {
+
+		try {
+
+			UserDTO userDto = baseService.findById(userId, userContext);
+
+			AttachmentDTO attachmentDTO = null;
+
+			if (userDto != null) {
+				attachmentDTO = attachmentService.findById(userDto.getImageId(), userContext);
+			}
+
+			if (attachmentDTO != null) {
+				response.setContentType(attachmentDTO.getType());
+				OutputStream out = response.getOutputStream();
+				out.write(attachmentDTO.getDoc());
+				out.close();
+			} else {
+				response.getWriter().write("ERROR: File not found");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

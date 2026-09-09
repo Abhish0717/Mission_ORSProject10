@@ -28,7 +28,7 @@ public class StudentDAOImpl extends BaseDAOImpl<StudentDTO> implements StudentDA
 
 	@Override
 	protected void populate(StudentDTO dto, UserContext userContext) {
-		CollegeDTO collegeDTO = collegeService.findByPK(dto.getCollegeId(), userContext);
+		CollegeDTO collegeDTO = collegeService.findByPk(dto.getCollegeId(), userContext);
 		if (collegeDTO != null) {
 			dto.setCollegeName(collegeDTO.getName());
 		}

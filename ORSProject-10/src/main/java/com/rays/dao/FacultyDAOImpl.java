@@ -38,15 +38,15 @@ public class FacultyDAOImpl extends BaseDAOImpl<FacultyDTO> implements FacultyDA
 	protected void populate(FacultyDTO dto, UserContext userContext) {
 
 		if (dto.getCollegeId() > 0) {
-			CollegeDTO collegeDto = collegeDao.findByPK(dto.getCollegeId(), userContext);
+			CollegeDTO collegeDto = collegeDao.findByPk(dto.getCollegeId(), userContext);
 			dto.setCollegeName(collegeDto.getName());
 		}
 		if (dto.getCourseId() > 0) {
-			CourseDTO courseDto = courseDao.findByPK(dto.getCourseId(), userContext);
+			CourseDTO courseDto = courseDao.findByPk(dto.getCourseId(), userContext);
 			dto.setCourseName(courseDto.getName());
 		}
 		if (dto.getSubjectId() > 0) {
-			SubjectDTO subjectDto = subjectDao.findByPK(dto.getSubjectId(), userContext);
+			SubjectDTO subjectDto = subjectDao.findByPk(dto.getSubjectId(), userContext);
 			dto.setSubjectName(subjectDto.getName());
 		}
 	}

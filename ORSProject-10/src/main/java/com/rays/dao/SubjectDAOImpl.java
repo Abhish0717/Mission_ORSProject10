@@ -29,7 +29,7 @@ public class SubjectDAOImpl extends BaseDAOImpl<SubjectDTO> implements SubjectDA
 	@Override
 	protected void populate(SubjectDTO dto, UserContext userContext) {
 		if (dto.getCourseId() != 0) {
-			CourseDTO courseDTO = courseDao.findByPK(dto.getCourseId(), userContext);
+			CourseDTO courseDTO = courseDao.findByPk(dto.getCourseId(), userContext);
 			if (courseDTO != null) {
 				dto.setCourseName(courseDTO.getName());
 			}

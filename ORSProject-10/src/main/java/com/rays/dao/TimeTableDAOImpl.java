@@ -33,12 +33,12 @@ public class TimeTableDAOImpl extends BaseDAOImpl<TimeTableDTO> implements TimeT
 	@Override
 	protected void populate(TimeTableDTO dto, UserContext userContext) {
 
-		SubjectDTO subjectDto = subjectService.findByPK(dto.getSubjectId(), userContext);
+		SubjectDTO subjectDto = subjectService.findByPk(dto.getSubjectId(), userContext);
 		if (subjectDto != null) {
 			dto.setSubjectName(subjectDto.getName());
 		}
 
-		CourseDTO courseDto = courseService.findByPK(dto.getCourseId(), userContext);
+		CourseDTO courseDto = courseService.findByPk(dto.getCourseId(), userContext);
 		if (courseDto != null) {
 			dto.setCourseName(courseDto.getName());
 		}

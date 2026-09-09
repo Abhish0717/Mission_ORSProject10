@@ -29,12 +29,16 @@ public class UserDAOImpl extends BaseDAOImpl<UserDTO> implements UserDAOInt {
 	@Override
 	protected void populate(UserDTO dto, UserContext userContext) {
 		if (dto.getRoleId() != null && dto.getRoleId() > 0) {
-			RoleDTO roleDto = roleDao.findByPK(dto.getRoleId(), userContext);
+			RoleDTO roleDto = roleDao.findByPk(dto.getRoleId(), userContext);
 			dto.setRoleName(roleDto.getName());
 		}
 		if (dto.getId() != null && dto.getId() > 0) {
-			UserDTO userData = findByPK(dto.getId(), userContext);
+			UserDTO userData = findByPk(dto.getId(), userContext);
 			dto.setLastLogin(userData.getLastLogin());
+		}
+		if (dto.getId() != null && dto.getId() > 0) {
+			UserDTO userData = findByPk(dto.getId(), null);
+			dto.setImageId(userData.getImageId());
 		}
 	}
 

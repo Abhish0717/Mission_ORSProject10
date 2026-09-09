@@ -56,7 +56,7 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 		entityManager.remove(dto);
 	}
 
-	public T findByPK(long pk, UserContext userContext) {
+	public T findByPk(long pk, UserContext userContext) {
 		T dto = entityManager.find(getDTOClass(), pk);
 		return dto;
 	}

@@ -29,7 +29,7 @@ public class MarksheetDAOImpl extends BaseDAOImpl<MarksheetDTO> implements Marks
 	@Override
 	protected void populate(MarksheetDTO dto, UserContext userContext) {
 		if (dto.getStudentId() != null) {
-			StudentDTO studentDTO = studentDao.findByPK(dto.getStudentId(), userContext);
+			StudentDTO studentDTO = studentDao.findByPk(dto.getStudentId(), userContext);
 			if (studentDTO != null) {
 				dto.setName(studentDTO.getFirstName() + " " + studentDTO.getLastName());
 			}
