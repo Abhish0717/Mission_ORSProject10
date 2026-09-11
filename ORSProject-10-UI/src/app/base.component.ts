@@ -69,6 +69,7 @@ export class BaseCtl implements OnInit {
     this.serviceLocator.httpservice.get(this.api.get + "/" + this.form.data.id, (res: any) => {
       if (res.success) {
         this.form.data = res.result.data;
+        this.form.data.dob = res.result.data.dob.substring(0, 10)
       } else {
         this.form.error = true;
         this.form.message = res.result.message;
@@ -76,15 +77,23 @@ export class BaseCtl implements OnInit {
     });
   }
 
-  submit() {
+  submit(callback?: (id: any) => void) {
     this.serviceLocator.httpservice.post(this.api.save, this.form.data, (res: any) => {
+      //Reset business data
       this.form.message = '';
       this.form.inputerror = {};
+      this.form.error = false;
       if (res.success) {
-        this.form.error = false;
+        // ✅ success message
         this.form.message = res.result.message;
+        // ✅ ID set (IMPORTANT)
         this.form.data.id = res.result.data;
+        // ✅ callback call (for image upload etc.)
+        if (callback) {
+          callback(this.form.data.id);
+        }
       } else {
+        // ❌ validation error
         this.form.error = true;
         if (res.result.inputerror) {
           this.form.inputerror = res.result.inputerror;

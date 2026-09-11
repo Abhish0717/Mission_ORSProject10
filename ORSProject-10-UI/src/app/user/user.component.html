@@ -147,16 +147,43 @@
                             <div class="validation-error">{{form.inputerror.status}}</div>
                         </div>
 
-                    </div>
-                    <div class="role-actions">
-                        <button type="submit" class="btn btn-primary role-btn">
-                            <i class="bi" [ngClass]="form.data.id ? 'bi-check-circle-fill' : 'bi-plus-circle-fill'"></i>
-                            {{ form.data.id ? 'Update' : 'Save' }}
-                        </button>
+                        <!-- IMAGE -->
+                        <label><b>{{'Profile Image' | translate }}</b></label>
+                        <div class="mb-2 text-center">
+                            <img *ngIf="imagePreview" [src]="imagePreview" class="img-thumbnail" width="120">
+
+                            <img *ngIf="!imagePreview && form.data.imageId"
+                                src="http://localhost:8080/User/profilePic/{{form.data.id}}" class="img-thumbnail"
+                                width="120">
+
+                            <img *ngIf="!imagePreview && !form.data.imageId" src="assets/img/default.webp"
+                                class="img-thumbnail" width="120">
+                        </div>
+
+                        <!-- BUTTONS -->
+                        <div class="text-center">
+                            <input type="file" #fileInput class="form-control mb-3"
+                                (change)="onFileSelect(fileInput.files)">
+                            <div class="role-actions">
+                                <button class="btn btn-primary role-btn" (click)="onUpload()">
+                                    <i class="bi"
+                                        [ngClass]="form.data.id ? 'bi-check-circle-fill' : 'bi-plus-circle-fill'"></i>
+                                    {{ form.data.id > 0 ? 'Update' : 'Save' }}
+                                </button>
+
+                                <button *ngIf="form.data.id" class="btn btn-primary" (click)="forward('/userlist')">
+                                    list
+                                </button>
+                                <button *ngIf="!form.data.id" type="button" class="btn btn-warning mr-2"
+                                    (click)="reset()">
+                                    Reset
+                                </button>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </div>
