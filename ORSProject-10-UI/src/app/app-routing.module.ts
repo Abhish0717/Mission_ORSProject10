@@ -179,11 +179,11 @@ const routes: Routes = [
   //   path: "getmarksheet/:id",
   //   component: GetmarksheetComponent
   // },
-  // //Daily Modules
-  // {
-  //   path: 'attendance',
-  //   component: AttendanceComponent
-  // },
+  //Daily Modules
+  {
+    path: 'attendance',
+    component: AttendanceComponent
+  },
   {
     path: 'attendance/:id',
     component: AttendanceComponent
