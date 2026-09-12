@@ -1,0 +1,143 @@
+<div class="role-page">
+
+    <div class="container py-4">
+
+        <div class="role-card">
+
+            <!-- Header -->
+            <div class="role-header">
+
+                <div>
+                    <h1 *ngIf="!form.data.id">
+                        <i class="bi bi-person-badge-fill me-2"></i>
+                        Add Role
+                    </h1>
+
+                    <h1 *ngIf="form.data.id > 0">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Update Role
+                    </h1>
+
+                    <p>
+                        Manage role information
+                    </p>
+                </div>
+
+                <div class="role-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+
+            </div>
+
+
+            <!-- Success Message -->
+            <div class="alert alert-success alert-dismissible fade show" *ngIf="!form.error && form.message"
+                role="alert">
+
+                <i class="bi bi-check-circle-fill me-2"></i>
+
+                {{form.message}}
+
+                <button type="button" class="btn-close" aria-label="Close" (click)="form.message = ''">
+                </button>
+
+            </div>
+
+
+            <!-- Error Message -->
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="form.error && form.message" role="alert">
+
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+                {{form.message}}
+
+                <button type="button" class="btn-close" aria-label="Close" (click)="form.message = ''">
+                </button>
+
+            </div>
+
+
+            <!-- Form -->
+            <form (submit)="submit()">
+
+                <div class="role-body">
+
+                    <div class="row g-4">
+
+
+                        <!-- Name -->
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Name <span class="required">*</span>
+                            </label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-text">
+                                    <i class="bi bi-person-badge"></i>
+                                </span>
+
+                                <input type="text" name="name" class="form-control" [(ngModel)]="form.data.name"
+                                    placeholder="Enter Role Name">
+
+                            </div>
+
+                            <div class="validation-error">
+                                {{form.inputerror.name}}
+                            </div>
+
+                        </div>
+
+
+                        <!-- Description -->
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Description <span class="required">*</span>
+                            </label>
+
+                            <div class="input-group">
+
+                                <span class="input-group-text textarea-icon">
+                                    <i class="bi bi-card-text"></i>
+                                </span>
+
+                                <textarea name="description" class="form-control" rows="4"
+                                    [(ngModel)]="form.data.description"
+                                    placeholder="Enter Short Description"></textarea>
+
+                            </div>
+
+                            <div class="validation-error">
+                                {{form.inputerror.description}}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <div class="role-actions">
+
+                        <button type="submit" class="btn btn-primary role-btn">
+
+                            <i class="bi" [ngClass]="form.data.id ? 'bi-check-circle-fill' : 'bi-plus-circle-fill'">
+                            </i>
+
+                            {{form.data.id ? 'Update' : 'Save'}}
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
