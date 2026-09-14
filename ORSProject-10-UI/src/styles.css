@@ -23,6 +23,7 @@ app-root > *:not(app-navbar):not(app-footer) {
   display: block;
 }
 
+
 /* =========================================================
    ORS NAVBAR
 ========================================================= */
@@ -86,7 +87,6 @@ app-root > *:not(app-navbar):not(app-footer) {
   padding: 4px 6px;
   margin-left: 6px;
 }
-
 
 /* Mobile */
 
