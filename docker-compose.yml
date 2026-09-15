@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+
+  frontend:
+    container_name: frontend-container
+    build: ./frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - my-network
+
+  backend:
+    container_name: backend-container
+    build: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - my-network
+    environment:
+      - DB_HOST=mysql
+
+  mysql:
+    container_name: mysql-container
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ors_p10
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
