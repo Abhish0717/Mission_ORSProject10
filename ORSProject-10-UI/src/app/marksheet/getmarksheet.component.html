@@ -1,0 +1,292 @@
+<div class="container-fluid d-flex justify-content-center align-items-center" style="background-image: url('assets/img/getMarksheet.png');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: calc(100vh - 125px);
+    padding: 25px 15px;">
+
+    <div class="card shadow-lg border-0 w-100" style="max-width: 700px; border-radius: 15px; overflow: hidden;">
+
+        <!-- Header -->
+        <div class="card-header text-center text-white py-3"
+            style="background: linear-gradient(135deg, #0d6efd, #0a58ca);">
+
+            <h3 class="fw-bold mb-0">
+                <i class="bi bi-file-earmark-text-fill me-2"></i>
+                Get Marksheet
+            </h3>
+
+        </div>
+
+
+        <!-- Body -->
+        <div class="card-body p-4">
+
+            <!-- Search Form -->
+            <form (ngSubmit)="go()">
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-semibold">
+                        <i class="bi bi-search me-1"></i>
+                        Enter Roll Number
+                    </label>
+
+                    <input type="text" name="rollNo" class="form-control" [(ngModel)]="form.data.rollNo"
+                        placeholder="Enter Roll Number">
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="row g-2">
+
+                    <!-- Search -->
+                    <div class="col-md-6">
+
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill w-100">
+
+                            <i class="bi bi-search me-2"></i>
+                            Search
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- Reset -->
+                    <div class="col-md-6">
+
+                        <button type="button" class="btn btn-outline-secondary btn-lg rounded-pill w-100"
+                            (click)="reset()">
+
+                            <i class="bi bi-arrow-clockwise me-2"></i>
+                            Reset
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <!-- Success Message -->
+            <div *ngIf="!form.error && form.message" class="alert alert-success mt-3" role="alert">
+
+                <i class="bi bi-check-circle-fill me-2"></i>
+
+                {{ form.message }}
+
+                <button type="button" class="btn-close float-end" aria-label="Close" (click)="closeMessage()">
+                </button>
+
+            </div>
+
+
+            <!-- Error Message -->
+            <div *ngIf="form.error && form.message" class="alert alert-danger mt-3" role="alert">
+
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+                {{ form.message }}
+
+                <button type="button" class="btn-close float-end" aria-label="Close" (click)="closeMessage()">
+                </button>
+
+            </div>
+
+
+            <!-- RESULT -->
+            <div class="mt-4" *ngIf="form.list.rollNo">
+
+                <!-- Student Details -->
+                <div class="card border-0 shadow-sm mb-3">
+
+                    <div class="card-header fw-bold">
+                        <i class="bi bi-person-vcard me-2"></i>
+                        Student Details
+                    </div>
+
+                    <div class="card-body p-0">
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered text-center mb-0">
+
+                                <tr>
+                                    <th>Roll No</th>
+                                    <td>{{ form.list.rollNo }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{ form.list.name }}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Subject Marks -->
+                <div class="card border-0 shadow-sm mb-3">
+
+                    <div class="card-header fw-bold">
+                        <i class="bi bi-journal-text me-2"></i>
+                        Subject Marks
+                    </div>
+
+                    <div class="card-body p-0">
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered text-center mb-0">
+
+                                <thead class="table-light">
+
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Max</th>
+                                        <th>Min</th>
+                                        <th>Marks</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <!-- Physics -->
+                                    <tr>
+
+                                        <td>Physics</td>
+
+                                        <td>100</td>
+
+                                        <td>35</td>
+
+                                        <td [ngClass]="form.list.physics > 35 ? 'text-success' : 'text-danger'"
+                                            class="fw-bold">
+
+                                            {{ form.list.physics }}
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <!-- Chemistry -->
+                                    <tr>
+
+                                        <td>Chemistry</td>
+
+                                        <td>100</td>
+
+                                        <td>35</td>
+
+                                        <td [ngClass]="form.list.chemistry > 35 ? 'text-success' : 'text-danger'"
+                                            class="fw-bold">
+
+                                            {{ form.list.chemistry }}
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <!-- Maths -->
+                                    <tr>
+
+                                        <td>Maths</td>
+
+                                        <td>100</td>
+
+                                        <td>35</td>
+
+                                        <td [ngClass]="form.list.maths > 35 ? 'text-success' : 'text-danger'"
+                                            class="fw-bold">
+
+                                            {{ form.list.maths }}
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Summary -->
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-header fw-bold">
+                        <i class="bi bi-bar-chart-fill me-2"></i>
+                        Result Summary
+                    </div>
+
+                    <div class="card-body p-0">
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered text-center mb-0">
+
+                                <!-- Total -->
+                                <tr>
+
+                                    <th>Total</th>
+
+                                    <td class="fw-bold">
+                                        {{ form.list.physics + form.list.chemistry + form.list.maths }}
+                                    </td>
+
+                                </tr>
+
+                                <!-- Percentage -->
+                                <tr>
+
+                                    <th>Percentage</th>
+
+                                    <td class="fw-bold">
+
+                                        {{
+                                        (
+                                        (form.list.physics + form.list.chemistry + form.list.maths) * 100) / 300 |
+                                        number:'2.0-2' }}%
+
+                                    </td>
+                                </tr>
+
+                                <!-- Result -->
+                                <tr>
+
+                                    <th>Result</th>
+
+                                    <td>
+
+                                        <span *ngIf="(
+                                            (form.list.physics + form.list.chemistry + form.list.maths) * 100) / 300 > 35;
+                                            else fail" class="badge text-bg-success px-3 py-2">
+                                            PASS
+                                        </span>
+
+                                        <ng-template #fail>
+
+                                            <span class="badge text-bg-danger px-3 py-2">
+                                                FAIL
+                                            </span>
+
+                                        </ng-template>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

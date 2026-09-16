@@ -141,4 +141,8 @@ export class BaseCtl implements OnInit {
   reset() {
     location.reload();
   }
+
+  closeMessage() {
+    this.form.message = '';
+  }
 }
