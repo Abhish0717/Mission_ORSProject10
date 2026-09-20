@@ -30,7 +30,7 @@
 
         <div *ngIf="form.list.length > 0">
 
-            <div class="search-card">
+            <form ngForm class="search-card">
                 <div class="row align-items-end g-3">
                     <div class="col-md-5 col-lg-4">
                         <label class="form-label">
@@ -53,15 +53,15 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
 
-            <div class="table-card">
+            <form ngForm class="table-card">
                 <div class="table-responsive">
                     <table class="table role-table mb-0">
                         <thead>
                             <tr>
                                 <th class="checkbox-column">
-                                    <input type="checkbox" class="form-check-input" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)">
+                                    <input type="checkbox" class="form-check-input" name="masterCheckbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)">
                                 </th>
                                 <th>S.No</th>
                                 <th>Name</th>
@@ -99,7 +99,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </form>
 
             <div class="list-actions">
                 <button type="button" class="btn btn-outline-secondary" (click)="previous()" [disabled]="form.pageNo == 0">

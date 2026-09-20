@@ -82,13 +82,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     MyprofileComponent,
     MarksheetmeritListComponent,
     GetmarksheetComponent,
+    MarksheetmeritlistComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
-    ,
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

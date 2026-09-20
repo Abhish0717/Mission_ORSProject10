@@ -33,7 +33,7 @@
         <div *ngIf="form.list.length > 0">
 
             <!-- Search Card -->
-            <div class="search-card mb-3">
+            <form ngForm class="search-card mb-3">
                 <div class="row align-items-end g-3">
                     <div class="col-md-5 col-lg-4">
                         <label class="form-label">
@@ -58,16 +58,17 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
+
 
             <!-- Table Card -->
-            <div class="table-card">
+            <form ngForm class="table-card">
                 <div class="table-responsive">
                     <table class="table attendance-table mb-0">
                         <thead>
                             <tr>
                                 <th class="checkbox-column">
-                                    <input type="checkbox" class="form-check-input" [(ngModel)]="isMasterSel"
+                                    <input type="checkbox" class="form-check-input" [(ngModel)]="isMasterSel" name="masterCheckbox"
                                         (change)="checkUncheckAll($event)">
                                 </th>
                                 <th>S.No</th>
@@ -128,7 +129,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </form>
 
             <!-- Bottom Actions -->
             <div class="list-actions">
