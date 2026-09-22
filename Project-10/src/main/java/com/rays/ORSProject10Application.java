@@ -1,5 +1,4 @@
 package com.rays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +12,8 @@ import com.rays.common.FrontCtl;
 @SpringBootApplication
 public class ORSProject10Application {
 
-	@Autowired
-	private FrontCtl frontCtl;
+//	@Autowired
+//	private FrontCtl frontCtl;
 
 	public static void main(String[] args) {
 
@@ -32,10 +31,10 @@ public class ORSProject10Application {
 						.allowCredentials(true);
 			}
 
-			@Override
-			public void addInterceptors(InterceptorRegistry registry) {
-				registry.addInterceptor(frontCtl).addPathPatterns("/**").excludePathPatterns("/Auth/**");
-			}
+//			@Override
+//			public void addInterceptors(InterceptorRegistry registry) {
+//				registry.addInterceptor(frontCtl).addPathPatterns("/**").excludePathPatterns("/Auth/**");
+//			}
 		};
 
 		return w;

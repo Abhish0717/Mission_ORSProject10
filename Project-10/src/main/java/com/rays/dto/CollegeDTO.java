@@ -13,7 +13,7 @@ public class CollegeDTO extends BaseDTO {
 	@Column(name = "name", length = 50)
 	private String name;
 
-	@Column(name = "address", length = 255)
+	@Column(name = "address", length = 50)
 	private String address;
 
 	@Column(name = "state", length = 50)
