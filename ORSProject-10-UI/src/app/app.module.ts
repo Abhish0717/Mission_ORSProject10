@@ -38,9 +38,8 @@ import { ChangepasswordComponent } from './user/changepassword.component';
 import { MyprofileComponent } from './user/myprofile.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MarksheetmeritListComponent } from './marksheet/marksheetmerit-list.component';
 import { GetmarksheetComponent } from './marksheet/getmarksheet.component';
-import { MarksheetmeritlistComponent } from './marksheet/marksheetmeritlist.component';
+import { MarksheetmeritlistComponent } from './marksheet/marksheetmerit-list.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -80,7 +79,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ForgotpasswordComponent,
     ChangepasswordComponent,
     MyprofileComponent,
-    MarksheetmeritListComponent,
     GetmarksheetComponent,
     MarksheetmeritlistComponent,
   ],

@@ -29,7 +29,6 @@ import { HotelComponent } from './hotel/hotel.component';
 import { ChangepasswordComponent } from './user/changepassword.component';
 import { MyprofileComponent } from './user/myprofile.component';
 import { GetmarksheetComponent } from './marksheet/getmarksheet.component';
-import { MarksheetmeritListComponent } from 'src/all components/marksheet/marksheetmerit-list.component';
 
 const routes: Routes = [
   {
@@ -168,10 +167,6 @@ const routes: Routes = [
   {
     path: 'myprofile/:id',
     component: MyprofileComponent
-  },
-  {
-    path: 'marksheetmeritlist',
-    component: MarksheetmeritListComponent
   },
   {
     path: "getmarksheet",
