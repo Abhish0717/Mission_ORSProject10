@@ -46,7 +46,6 @@ datepicker: any;
     });
   }
 
-  //
   // 📤 IMAGE UPLOAD METHOD
   myFile() {
     if (!this.fileToUpload) {
