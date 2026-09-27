@@ -11,6 +11,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.rays.common.BaseDTO;
 
+/**
+ * DTO class for Attachment entity.
+ * 
+ * This class represents file attachments such as profile images. It stores file
+ * metadata and binary data in the database.
+ * 
+ * Features: - Stores file name, type, description - Stores file content as byte
+ * array (LOB) - Associates attachment with a user - Supports file upload using
+ * MultipartFile
+ * 
+ * Mapped to table: ST_ATTACHMENT
+ * 
+ * @author Abhishish Bhawsar
+ */
 @Entity
 @Table(name = "ST_ATTACHMENT")
 public class AttachmentDTO extends BaseDTO {
@@ -89,16 +103,24 @@ public class AttachmentDTO extends BaseDTO {
 		this.doc = doc;
 	}
 
+	/**
+	 * Returns unique key.
+	 * 
+	 * @return "userId"
+	 */
 	@Override
 	public String getUniqueKey() {
-		// TODO Auto-generated method stub
-		return null;
+		return "userId";
 	}
 
+	/**
+	 * Returns unique value.
+	 * 
+	 * @return userId as string
+	 */
 	@Override
 	public String getUniqueValue() {
-		// TODO Auto-generated method stub
-		return null;
+		return userId.toString();
 	}
 
 	@Override
@@ -107,9 +129,14 @@ public class AttachmentDTO extends BaseDTO {
 		return null;
 	}
 
+	/**
+	 * Returns table name.
+	 * 
+	 * @return "ATTACHMENT"
+	 */
 	@Override
 	public String getTableName() {
 		// TODO Auto-generated method stub
-		return null;
+		return "ATTACHMENT";
 	}
 }
